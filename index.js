@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
 
+const db
 // Move the config object to the global scope.
 global.appConfig = require("./configs/config.json");
 
