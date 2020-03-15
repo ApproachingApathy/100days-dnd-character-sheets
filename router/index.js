@@ -21,7 +21,8 @@ router.get("/", (req, res) => {
 	});
 });
 
-app.use("/characters", require("./characters"));
+router.use("/characters", require("./characters"));
+router.use("/users", require("./users"));
 
 // 404 Error
 router.get("*", (req, res) => {

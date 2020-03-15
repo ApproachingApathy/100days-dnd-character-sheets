@@ -6,7 +6,7 @@ module.exports;
 function buildModels() {
 	const models = {};
 	// Read models directory
-	const directories = fs.readdirSync(path.resolve("./models"));
+	const directories = fs.readdirSync(path.resolve("db/models"));
 
 	directories.forEach(dir => {
 		// Capitalize the modelName.
@@ -14,7 +14,7 @@ function buildModels() {
 
 		models[modelName] = mongoose.model(
 			modelName,
-			require(path.resolve("./models", dir))
+			require(path.resolve("db/models", dir))
 		);
 	});
 
@@ -28,12 +28,15 @@ let connect = new Promise((resolve, reject) => {
 
 	const db = mongoose.connection;
 	db.on("error", () => {
-		// logger.error("Couldn't connect to mongodb");
+		logger.error("Couldn't connect to mongodb");
 		reject("Failed to connect to mongodb.");
 	});
 
 	db.once("open", () => {
-		// logger.info(`Connected to mongodb at ${new Date().toLocaleDateString()}`);
+		let connectTime = new Date();
+		logger.info(
+			`Connected to mongodb at ${connectTime.toLocaleDateString()} ${connectTime.toLocaleTimeString()}`
+		);
 		let models = buildModels();
 
 		/**
@@ -41,7 +44,10 @@ let connect = new Promise((resolve, reject) => {
 		 */
 		let close = () =>
 			db.close(() => {
-				// logger.info(`Disconnected from mongodb at ${(new Date).toLocaleTimeString()}.`)
+				let dcTime = new Date();
+				logger.info(
+					`Disconnected from mongodb at ${dcTime.toLocaleDateString()} ${dcTime.toLocaleTimeString()}.`
+				);
 			});
 		resolve({
 			mongoose,

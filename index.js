@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
+const dbPromise = require("./db");
 
-const db
 // Move the config object to the global scope.
 global.appConfig = require("./configs/config.json");
 
@@ -14,6 +14,11 @@ app.set("layout", "layouts/layout");
 app.use(expressLayouts);
 
 app.use(express.static("public"));
+app.use(async (req, res, next) => {
+	const db = await dbPromise;
+	req.context = { ...db };
+	next();
+});
 app.use(require("./router"));
 
 const server = app.listen(appConfig.PORT, appConfig.HOSTNAME, () => {
