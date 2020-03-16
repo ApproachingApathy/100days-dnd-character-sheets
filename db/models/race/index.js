@@ -2,15 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 module.exports = new Schema({
-	shortName: String,
-	longName: String,
-	race: mongoose.ObjectId,
-	class: mongoose.ObjectId,
-	player: mongoose.ObjectId,
-	Description: String,
-	urlSlug: String,
+	name: String,
 	stats: {
-		abilities: {
+		abilityMods: {
 			strength: Number,
 			dexterity: Number,
 			constitution: Number,
@@ -19,6 +13,9 @@ module.exports = new Schema({
 			charisma: Number
 		},
 		speed: Number,
-		proficiencyBonus: Number
+		size: {
+			type: String,
+			enum: ["tiny", "small", "medium", "large", "huge", "gargantuan"]
+		}
 	}
 });
