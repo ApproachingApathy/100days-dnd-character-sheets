@@ -23,7 +23,8 @@ function buildModels() {
 
 let connect = new Promise((resolve, reject) => {
 	mongoose.connect("mongodb://localhost/dnd-sheets", {
-		useNewUrlParser: true
+		useNewUrlParser: true,
+		useUnifiedTopology: true
 	});
 
 	const db = mongoose.connection;

@@ -17,5 +17,27 @@ module.exports = new Schema({
 			type: String,
 			enum: ["tiny", "small", "medium", "large", "huge", "gargantuan"]
 		}
+	},
+	age: {
+		lifespan: Number,
+		maturity: Number
+	},
+	alignments: {
+		type: [String],
+		enum: [
+			"lawful good",
+			"neutral good",
+			"chaotic good",
+			"lawful neutral",
+			"true neutral",
+			"chaotic neutral",
+			"lawful evil",
+			"neutral evil",
+			"chaotic evil"
+		]
+	},
+	languages: [String],
+	parentRace: {
+		type: [mongoose.Types.ObjectId, null]
 	}
 });

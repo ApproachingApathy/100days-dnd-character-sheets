@@ -2,7 +2,10 @@ const winston = require("winston");
 
 module.exports = function createLogger() {
 	return winston.createLogger({
-		level: appConfig.LOGGER_LEVEL,
+		level:
+			typeof appConfig != "undefined"
+				? appConfig.LOGGER_LEVEL || "debug"
+				: "debug",
 		transports: [
 			new winston.transports.Console({
 				level: "debug",

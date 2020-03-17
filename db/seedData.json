@@ -1,0 +1,523 @@
+{
+	"races": [
+		{
+			"name": "Dwarf",
+			"stats": {
+				"abilityMods": {
+					"strength": 0,
+					"dexterity": 0,
+					"constitution": 2,
+					"intelligence": 0,
+					"wisdom": 0,
+					"charisma": 0
+				},
+				"speed": 25,
+				"size": "medium"
+			},
+			"age": {
+				"lifespan": 350,
+				"maturity": 50
+			},
+			"alignments": ["lawful good", "lawful neutral", "neutral good"],
+			"languages": ["common", "dwarvish"],
+			"parentRace": null
+		},
+		{
+			"name": "Elf",
+			"stats": {
+				"abilityMods": {
+					"strength": 0,
+					"dexterity": 2,
+					"constitution": 0,
+					"intelligence": 0,
+					"wisdom": 0,
+					"charisma": 0
+				},
+				"speed": 30,
+				"size": "medium"
+			},
+			"age": {
+				"lifespan": 750,
+				"maturity": 100
+			},
+			"alignments": ["chaotic good", "chaotic neutral", "neutral good"],
+			"languages": ["common", "dwarvish"],
+			"parentRace": null
+		},
+		{
+			"name": "Halfling",
+			"stats": {
+				"abilityMods": {
+					"strength": 0,
+					"dexterity": 2,
+					"constitution": 0,
+					"intelligence": 0,
+					"wisdom": 0,
+					"charisma": 0
+				},
+				"speed": 25,
+				"size": "small"
+			},
+			"age": {
+				"lifespan": 150,
+				"maturity": 20
+			},
+			"alignments": ["lawful good"],
+			"languages": ["common", "elvish"],
+			"parentRace": null
+		},
+		{
+			"name": "Human",
+			"stats": {
+				"abilityMods": {
+					"strength": 1,
+					"dexterity": 1,
+					"constitution": 1,
+					"intelligence": 1,
+					"wisdom": 1,
+					"charisma": 1
+				},
+				"speed": 30,
+				"size": "medium"
+			},
+			"age": {
+				"lifespan": 80,
+				"maturity": 20
+			},
+			"alignments": ["lawful good", "lawful neutral", "neutral good"],
+			"languages": ["common", "choice"],
+			"parentRace": null
+		},
+		{
+			"name": "Dragonborn",
+			"stats": {
+				"abilityMods": {
+					"strength": 2,
+					"dexterity": 0,
+					"constitution": 0,
+					"intelligence": 0,
+					"wisdom": 0,
+					"charisma": 1
+				},
+				"speed": 30,
+				"size": "medium"
+			},
+			"age": {
+				"lifespan": 80,
+				"maturity": 15
+			},
+			"alignments": [
+				"lawful good",
+				"chaotic good",
+				"lawful evil",
+				"chaotic evil"
+			],
+			"languages": ["common", "draconic"],
+			"parentRace": null
+		},
+		{
+			"name": "Gnome",
+			"stats": {
+				"abilityMods": {
+					"strength": 0,
+					"dexterity": 0,
+					"constitution": 0,
+					"intelligence": 2,
+					"wisdom": 0,
+					"charisma": 0
+				},
+				"speed": 25,
+				"size": "small"
+			},
+			"age": {
+				"lifespan": 500,
+				"maturity": 40
+			},
+			"alignments": ["lawful good", "neutral good", "chaotic good"],
+			"languages": ["common", "dwarvish"],
+			"parentRace": null
+		},
+		{
+			"name": "Half-Elf",
+			"stats": {
+				"abilityMods": {
+					"strength": 0,
+					"dexterity": 0,
+					"constitution": 0,
+					"intelligence": 0,
+					"wisdom": 0,
+					"charisma": 2
+				},
+				"speed": 30,
+				"size": "medium"
+			},
+			"age": {
+				"lifespan": 180,
+				"maturity": 20
+			},
+			"alignments": ["chaotic good", "chaotic neutral", "neutral good"],
+			"languages": ["common", "elvish", "choice"],
+			"parentRace": null
+		},
+		{
+			"name": "Half-Orc",
+			"stats": {
+				"abilityMods": {
+					"strength": 2,
+					"dexterity": 0,
+					"constitution": 1,
+					"intelligence": 0,
+					"wisdom": 0,
+					"charisma": 0
+				},
+				"speed": 30,
+				"size": "medium"
+			},
+			"age": {
+				"lifespan": 75,
+				"maturity": 14
+			},
+			"alignments": ["chaotic evil", "chaotic neutral", "true neutral"],
+			"languages": ["common", "orc"],
+			"parentRace": null
+		},
+		{
+			"name": "Teifling",
+			"stats": {
+				"abilityMods": {
+					"strength": 0,
+					"dexterity": 0,
+					"constitution": 0,
+					"intelligence": 1,
+					"wisdom": 0,
+					"charisma": 2
+				},
+				"speed": 30,
+				"size": "medium"
+			},
+			"age": {
+				"lifespan": 80,
+				"maturity": 20
+			},
+			"alignments": ["chaotic evil", "chaotic neutral", "neutral evil"],
+			"languages": ["common", "orc"],
+			"parentRace": null
+		}
+	],
+	"classes": [
+		{
+			"name": "Barbarian",
+			"stats": {
+				"hitPoints": {
+					"hitDice": {
+						"die": {
+							"amount": 1,
+							"dice": "d12"
+						}
+					},
+					"initial": 12,
+					"levelUp": {
+						"die": {
+							"amount": 1,
+							"dice": "d12"
+						},
+						"alternative": 7
+					}
+				},
+				"proficiencies": {
+					"armor": ["light armor", "medium armor", "shields"],
+					"weapons": ["simple weapons", "martial weapons"],
+					"tools": [],
+					"savingThrows": ["strength", "constitution"],
+					"skills": [
+						{
+							"selectableAmount": 2,
+							"options": [
+								"animal handling",
+								"athletics",
+								"intimidation",
+								"nature",
+								"perception",
+								"survival"
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Bard",
+			"stats": {
+				"hitPoints": {
+					"hitDice": {
+						"die": {
+							"amount": 1,
+							"dice": "d8"
+						}
+					},
+					"initial": 8,
+					"levelUp": {
+						"die": {
+							"amount": 1,
+							"dice": "d8"
+						},
+						"alternative": 5
+					}
+				},
+				"proficiencies": {
+					"armor": ["light armor"],
+					"weapons": [
+						"simple weapons",
+						"hand crossbows",
+						"longswords",
+						"rapiers",
+						"shortswords"
+					],
+					"tools": ["3 musical instruments"],
+					"savingThrows": ["dexterity", "charisma"],
+					"skills": [
+						{
+							"selectableAmount": 3,
+							"options": [
+								"acrobatics",
+								"animal handling",
+								"arcana",
+								"athletics",
+								"deception",
+								"history",
+								"insight",
+								"intimidation",
+								"investigation",
+								"medicine",
+								"nature",
+								"perception",
+								"performance",
+								"perception",
+								"religion",
+								"sleight or hand",
+								"stealth",
+								"survival"
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Cleric",
+			"stats": {
+				"hitPoints": {
+					"hitDice": {
+						"die": {
+							"amount": 1,
+							"dice": "d8"
+						}
+					},
+					"initial": 8,
+					"levelUp": {
+						"die": {
+							"amount": 1,
+							"dice": "d8"
+						},
+						"alternative": 5
+					}
+				},
+				"proficiencies": {
+					"armor": ["light armor", "medium armor", "shields"],
+					"weapons": ["simple weapons"],
+					"tools": [],
+					"savingThrows": ["wisdom", "charisma"],
+					"skills": [
+						{
+							"selectableAmount": 2,
+							"options": [
+								"history",
+								"insight",
+								"medicine",
+								"persuasion",
+								"religion"
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Druid",
+			"stats": {
+				"hitPoints": {
+					"hitDice": {
+						"die": {
+							"amount": 1,
+							"dice": "d8"
+						}
+					},
+					"initial": 8,
+					"levelUp": {
+						"die": {
+							"amount": 1,
+							"dice": "d8"
+						},
+						"alternative": 5
+					}
+				},
+				"proficiencies": {
+					"armor": ["light armor", "medium armor", "shields"],
+					"weapons": [
+						"clubs",
+						"daggers",
+						"dart",
+						"javelins",
+						"maces",
+						"quarterstaffs",
+						"scimitar",
+						"sickles",
+						"slings",
+						"spears"
+					],
+					"tools": ["herbalism kit"],
+					"savingThrows": ["intelligence", "wisdom"],
+					"skills": [
+						{
+							"selectableAmount": 2,
+							"options": [
+								"arcana",
+								"animal handling",
+								"insight",
+								"medicine",
+								"nature",
+								"perception",
+								"religion",
+								"survival"
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Fighter",
+			"stats": {
+				"hitPoints": {
+					"hitDice": {
+						"die": {
+							"amount": 1,
+							"dice": "d10"
+						}
+					},
+					"initial": 10,
+					"levelUp": {
+						"die": {
+							"amount": 1,
+							"dice": "d10"
+						},
+						"alternative": 6
+					}
+				},
+				"proficiencies": {
+					"armor": ["all armor", "shields"],
+					"weapons": ["simple weapons", "martial weapons"],
+					"tools": [],
+					"savingThrows": ["strength", "constitution"],
+					"skills": [
+						{
+							"selectableAmount": 2,
+							"options": [
+								"acrobatics",
+								"animal handling",
+								"athletics",
+								"history",
+								"insight",
+								"intimidation",
+								"perception",
+								"survival"
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Monk",
+			"stats": {
+				"hitPoints": {
+					"hitDice": {
+						"die": {
+							"amount": 1,
+							"dice": "d8"
+						}
+					},
+					"initial": 8,
+					"levelUp": {
+						"die": {
+							"amount": 1,
+							"dice": "d8"
+						},
+						"alternative": 5
+					}
+				},
+				"proficiencies": {
+					"armor": [],
+					"weapons": ["simple weapons", "shortswords"],
+					"tools": [
+						"Choose one type of artisan’s tools or one musical instrument"
+					],
+					"savingThrows": ["strength", "dexterity"],
+					"skills": [
+						{
+							"selectableAmount": 2,
+							"options": [
+								"acrobatics",
+								"athletics",
+								"history",
+								"insight",
+								"religion",
+								"stealth"
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Paladin",
+			"stats": {
+				"hitPoints": {
+					"hitDice": {
+						"die": {
+							"amount": 1,
+							"dice": "d10"
+						}
+					},
+					"initial": 10,
+					"levelUp": {
+						"die": {
+							"amount": 1,
+							"dice": "d10"
+						},
+						"alternative": 6
+					}
+				},
+				"proficiencies": {
+					"armor": ["all armor", "shields"],
+					"weapons": ["simple weapons", "martial weapons"],
+					"tools": [],
+					"savingThrows": ["wisdom", "charisma"],
+					"skills": [
+						{
+							"selectableAmount": 2,
+							"options": [
+								"athletics",
+								"insight",
+								"intimidation",
+								"medicine",
+								"persuasion",
+								"religion"
+							]
+						}
+					]
+				}
+			}
+		}
+	]
+}
