@@ -366,7 +366,7 @@
 					"weapons": [
 						"clubs",
 						"daggers",
-						"dart",
+						"darts",
 						"javelins",
 						"maces",
 						"quarterstaffs",
@@ -512,6 +512,232 @@
 								"intimidation",
 								"medicine",
 								"persuasion",
+								"religion"
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Ranger",
+			"stats": {
+				"hitPoints": {
+					"hitDice": {
+						"die": {
+							"amount": 1,
+							"dice": "d10"
+						}
+					},
+					"initial": 10,
+					"levelUp": {
+						"die": {
+							"amount": 1,
+							"dice": "d10"
+						},
+						"alternative": 6
+					}
+				},
+				"proficiencies": {
+					"armor": ["light armor", "medium armor", "shields"],
+					"weapons": ["simple weapons", "martial weapons"],
+					"tools": [],
+					"savingThrows": ["strength", "dexterity"],
+					"skills": [
+						{
+							"selectableAmount": 3,
+							"options": [
+								"animal handling",
+								"athletics",
+								"insight",
+								"investigation",
+								"nature",
+								"perception",
+								"stealth",
+								"survival"
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Rogue",
+			"stats": {
+				"hitPoints": {
+					"hitDice": {
+						"die": {
+							"amount": 1,
+							"dice": "d8"
+						}
+					},
+					"initial": 8,
+					"levelUp": {
+						"die": {
+							"amount": 1,
+							"dice": "d8"
+						},
+						"alternative": 5
+					}
+				},
+				"proficiencies": {
+					"armor": ["light armor"],
+					"weapons": [
+						"simple weapons",
+						"hand crossbows",
+						"longswords",
+						"rapiers",
+						"shortswords"
+					],
+					"tools": ["thieves tools"],
+					"savingThrows": ["dexterity", "intelligence"],
+					"skills": [
+						{
+							"selectableAmount": 4,
+							"options": [
+								"acrobatics",
+								"athletics",
+								"deception",
+								"insight",
+								"intimidation",
+								"investigation",
+								"perception",
+								"performance",
+								"persuasion",
+								"sleight or hand",
+								"stealth"
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Sorcerer",
+			"stats": {
+				"hitPoints": {
+					"hitDice": {
+						"die": {
+							"amount": 1,
+							"dice": "d6"
+						}
+					},
+					"initial": 6,
+					"levelUp": {
+						"die": {
+							"amount": 1,
+							"dice": "d6"
+						},
+						"alternative": 4
+					}
+				},
+				"proficiencies": {
+					"armor": [],
+					"weapons": [
+						"daggers",
+						"darts",
+						"slings",
+						"quarterstaffs",
+						"light crossbows"
+					],
+					"tools": [],
+					"savingThrows": ["constitution", "charisma"],
+					"skills": [
+						{
+							"selectableAmount": 2,
+							"options": [
+								"arcana",
+								"deception",
+								"insight",
+								"intimidation",
+								"persuasion",
+								"religion"
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Warlock",
+			"stats": {
+				"hitPoints": {
+					"hitDice": {
+						"die": {
+							"amount": 1,
+							"dice": "d8"
+						}
+					},
+					"initial": 5,
+					"levelUp": {
+						"die": {
+							"amount": 1,
+							"dice": "d8"
+						},
+						"alternative": 5
+					}
+				},
+				"proficiencies": {
+					"armor": ["light armor"],
+					"weapons": ["simple weapons"],
+					"tools": [],
+					"savingThrows": ["wisdom", "charisma"],
+					"skills": [
+						{
+							"selectableAmount": 2,
+							"options": [
+								"arcana",
+								"deception",
+								"history",
+								"intimidation",
+								"investigation",
+								"nature",
+								"religion"
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Paladin",
+			"stats": {
+				"hitPoints": {
+					"hitDice": {
+						"die": {
+							"amount": 1,
+							"dice": "d6"
+						}
+					},
+					"initial": 6,
+					"levelUp": {
+						"die": {
+							"amount": 1,
+							"dice": "d6"
+						},
+						"alternative": 4
+					}
+				},
+				"proficiencies": {
+					"armor": ["all armor", "shields"],
+					"weapons": [
+						"daggers",
+						"darts",
+						"slings",
+						"quarterstaffs",
+						"light crossbows"
+					],
+					"tools": [],
+					"savingThrows": ["intelligence", "wisdom"],
+					"skills": [
+						{
+							"selectableAmount": 2,
+							"options": [
+								"arcana",
+								"history",
+								"insight",
+								"investigation",
+								"medicine",
 								"religion"
 							]
 						}
