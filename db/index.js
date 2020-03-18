@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const fs = require("fs");
 const path = require("path");
 
+const dbConfig = require('../configs/db.json')
+
 module.exports;
 function buildModels() {
 	const models = {};
@@ -23,7 +25,7 @@ function buildModels() {
 
 let connect = new Promise((resolve, reject) => {
 	mongoose
-		.connect("mongodb://localhost/dnd-sheets", {
+		.connect(dbConfig.CONNECTION_URL, {
 			useNewUrlParser: true,
 			useUnifiedTopology: true
 		})
