@@ -11,6 +11,7 @@ router.get("/:id", async (req, res) => {
 	const character = await req.context.db.models.Character.findOne({
 		_id: req.params.id
 	});
+
 	if (character == null) {
 		res.redirect("/404");
 		return false;
