@@ -16,7 +16,7 @@ app.use(expressLayouts);
 app.use(express.static("public"));
 app.use(async (req, res, next) => {
 	const db = await dbPromise;
-	req.context = { ...db };
+	req.context = { db };
 	next();
 });
 app.use(require("./router"));

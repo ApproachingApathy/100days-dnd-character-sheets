@@ -22,40 +22,24 @@ function buildModels() {
 }
 
 let connect = new Promise((resolve, reject) => {
-	mongoose.connect("mongodb://localhost/dnd-sheets", {
-		useNewUrlParser: true,
-		useUnifiedTopology: true
-	});
+	mongoose
+		.connect("mongodb://localhost/dnd-sheets", {
+			useNewUrlParser: true,
+			useUnifiedTopology: true
+		})
+		.then(db => {
+			let connectTime = new Date();
+			logger.info(
+				`Connected to mongodb at ${connectTime.toLocaleDateString()} ${connectTime.toLocaleTimeString()}`
+			);
+			buildModels();
 
-	const db = mongoose.connection;
-	db.on("error", () => {
-		logger.error("Couldn't connect to mongodb");
-		reject("Failed to connect to mongodb.");
-	});
-
-	db.once("open", () => {
-		let connectTime = new Date();
-		logger.info(
-			`Connected to mongodb at ${connectTime.toLocaleDateString()} ${connectTime.toLocaleTimeString()}`
-		);
-		let models = buildModels();
-
-		/**
-		 * Close connection to mongo db.
-		 */
-		let close = () =>
-			db.close(() => {
-				let dcTime = new Date();
-				logger.info(
-					`Disconnected from mongodb at ${dcTime.toLocaleDateString()} ${dcTime.toLocaleTimeString()}.`
-				);
-			});
-		resolve({
-			mongoose,
-			models,
-			close
+			resolve(db);
+		})
+		.catch(err => {
+			logger.error("Couldn't connect to mongodb");
+			reject("Failed to connect to mongodb.");
 		});
-	});
 });
 
 /**
