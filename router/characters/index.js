@@ -1,4 +1,6 @@
 const express = require("express");
+const bodyParser = require("body-parser");
+
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -6,25 +8,26 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-	console.log(req.params.id);
-	req.context.db.models.Character.findOne({ _id: req.params.id }).then(
-		async result => {
-			if (result == null) res.redirect("/404");
-			console.log(result);
-			res.render("characterSheet", {
-				data: {
-					character: result,
-					player: await req.context.models.Player.findOne({
-						_id: result.player
-					})
-				}
-			});
+	const character = await req.context.db.models.Character.findOne({
+		_id: req.params.id
+	});
+	if (character == null) {
+		res.redirect("/404");
+		return false;
+	}
+
+	const player = await req.context.db.models.Player.findOne({
+		_id: character.player
+	});
+
+	res.render("characterSheet", {
+		data: {
+			character,
+			player
 		}
-	);
+	});
 });
 
-router.post("/new", (req, res) => {});
-
-router.get("/create-test", async (req, res) => {});
+router.post("/new", bodyParser.urlencoded(), (req, res) => {});
 
 module.exports = router;
