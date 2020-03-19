@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const dbConfig = require('../configs/db.json')
 
 global.logger = require("../helpers/create-logger")();
 
@@ -6,7 +7,7 @@ mongoose.model("Race", require("./models/race"));
 mongoose.model("Class", require("./models/class"));
 
 mongoose
-	.connect("mongodb://localhost/dnd-sheets", {
+	.connect(dbConfig.CONNECTION_URL, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true
 	})
