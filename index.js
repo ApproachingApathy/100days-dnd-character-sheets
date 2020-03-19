@@ -1,7 +1,9 @@
 const express = require("express");
-const app = express();
 const expressLayouts = require("express-ejs-layouts");
+
 const dbPromise = require("./db");
+
+const app = express();
 
 // Move the config object to the global scope.
 global.appConfig = require("./configs/config.json");
@@ -21,7 +23,7 @@ app.use(async (req, res, next) => {
 });
 app.use(require("./router"));
 
-const server = app.listen(appConfig.PORT, appConfig.HOSTNAME, () => {
+const server = app.listen(appConfig.PORT, appConfig.HOSTNAME || "127.0.0.1", () => {
 	const hostname = server.address().address;
 	const port = server.address().port;
 	logger.info(`Server listening at http://${hostname}:${port}/`);
