@@ -12,6 +12,7 @@
 	"private": false,
 	"dependencies": {
 		"body-parser": "^1.19.0",
+		"datalize": "^0.3.4",
 		"ejs": "^3.0.1",
 		"express": "^4.17.1",
 		"express-ejs-layouts": "^2.5.0",
