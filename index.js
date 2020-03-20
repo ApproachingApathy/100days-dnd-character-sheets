@@ -1,5 +1,6 @@
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
+const sass = require('node-sass-middleware')
 
 const dbPromise = require("./db");
 
@@ -14,6 +15,12 @@ global.logger = require("./helpers/create-logger")();
 app.set("view engine", "ejs");
 app.set("layout", "layouts/layout");
 app.use(expressLayouts);
+app.use(sass({
+	src: "sass/",
+	dest: "public/css/",
+	debug: true,
+	prefix: "/css"
+}))
 
 app.use(express.static("public"));
 app.use(async (req, res, next) => {

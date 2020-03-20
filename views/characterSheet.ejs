@@ -1,15 +1,41 @@
-<h1><%= data.character.longName %></h1>
-<h2><%= data.player.username %></h2>
-
-<h3>Strength</h3>
-<p><%= data.character.stats.abilities.strength %></p>
-<h3>Dexterity</h3>
-<p><%= data.character.stats.abilities.dexterity %></p>
-<h3>Consitution</h3>
-<p><%= data.character.stats.abilities.constitution %></p>
-<h3>Intelligence</h3>
-<p><%= data.character.stats.abilities.intelligence %></p>
-<h3>Wisdom</h3>
-<p><%= data.character.stats.abilities.wisdom %></p>
-<h3>Charisma</h3>
-<p><%= data.character.stats.abilities.charisma %></p>
+<div class="block-row">
+    <div class="box">
+        <h1><%= data.character.longName %></h1>
+        <caption><%= data.player.username %> </caption>
+        <div class="block-row">
+            <div class="block">
+                <% Object.keys(data.character.stats.abilities).forEach( ability => { %>
+                    <% if (ability != "$init") { %> 
+                        <div class="block w-100">
+                            <h5>
+                                <%= ability.charAt(0).toUpperCase() +
+                                 ability.substring(1) %>
+                            </h5>
+                            <p class="ability-score">
+                                <%= data.character.stats.abilities[ability] %> 
+                            </p>
+                        </div>
+                    <% } %> 
+                <% }); %>
+                
+            </div>
+            <div class="block">
+                <div class="block-row">
+                    <div class="block">
+                        <p></p>
+                        <p>Armor Class</p>
+                    </div>
+                    <div class="block">
+                        <p></p>
+                        <p>Initiative</p>
+                    </div>
+                    <div class="block">
+                        <p></p>
+                        <p>Speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

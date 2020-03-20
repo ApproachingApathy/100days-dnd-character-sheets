@@ -7,8 +7,11 @@
 			<%= typeof page != 'undefined' ? `${page.title} | ${site.title}` ||
 			site.title : site.title %>
 		</title>
+		<link rel="stylesheet" href="/css/style.css">
 	</head>
 	<body>
-		<%-body %>
+		<div class="container">
+			<%-body %>
+		</div>
 	</body>
 </html>

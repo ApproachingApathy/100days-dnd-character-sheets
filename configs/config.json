@@ -1,5 +1,5 @@
 {
-	"HOSTNAME": "127.0.0.1",
+	"HOSTNAME": "192.168.0.9",
 	"PORT": 3000,
 	"ENVIROMENT": "development",
 	"LOGGER_LEVEL": "debug"
