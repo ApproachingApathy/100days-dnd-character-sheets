@@ -24,11 +24,45 @@ router.get("/:id", async (req, res) => {
 	res.render("characterSheet", {
 		data: {
 			character,
-			player
+			player,
+			races: await req.context.db.models.Race.find()
 		}
 	});
 });
 
-router.post("/new", bodyParser.urlencoded(), (req, res) => {});
+router.post("/new", bodyParser.json(), (req, res) => {
+	if (
+		!req.body || 
+		!req.body.data || 
+		!req.body.data.longName
+	) {
+		res.status = 400,
+		res.json({error: "Bad Request"})
+		return false
+	}
+	let data = req.body.data
+	let abilityScoreDefault = 8
+	req.context.db.models.Character.create({
+		shortName: data.shortName || data.longName,
+		longName: data.longName,
+		race: data.raceId || null,
+		class: data.classId || null,
+		player: data.playerId || null,
+		description: data.description || "",
+		age: data.age || "",
+		urlSlug: data.urlSlug || "",
+		stats: {
+			abilities: {
+				strength: data.stats.abilities.strength || abilityScoreDefault,
+				dexterity: data.stats.abilities.dexterity || abilityScoreDefault,
+				constitution: data.stats.abilities.constitution || abilityScoreDefault,
+				intelligence: data.stats.abilities.intelligence || abilityScoreDefault,
+				wisdom: data.stats.abilities.wisdom || abilityScoreDefault,
+				charisma: data.stats.abilities.charisma || abilityScoreDefault
+			}
+		}
+	})
+	.then(result => res.json(result))
+});
 
 module.exports = router;

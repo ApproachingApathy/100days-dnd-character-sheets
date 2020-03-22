@@ -19,16 +19,18 @@ mongoose
 		await db.models.Class.create(seedData.classes);
 
 		const elf = await db.models.Race.findOne({name: "Elf"})
+		const warlock = await db.models.Class.findOne({name: "Warlock"})
 		const player = await db.models.Player.create({
 			username: "admin",
 			email: "ephriamhenderson@ephriamhenderson.dev",
 			password: 'password'
 		})
+
 		await db.models.Character.create({
 			shortName: "Aria",
 			longName: "Aria Wyndsong",
 			race: elf.id,
-			"class": await db.models.Class.findOne({name: "Warlock"}).id,
+			class: warlock.id,
 			player: player.id,
 			description: "Aria is awesome.",
 			age: 72,
@@ -41,130 +43,7 @@ mongoose
 					intelligence: 13,
 					wisdom: 14,
 					charisma: 16,
-				},
-				skills: {
-					acrobatics: {
-						skill: {
-							proficiency: false,
-							value: 1,
-							additionalModifiers: []
-						}
-					},
-					animalHandling: {
-						skill: {
-							proficiency: false,
-							value: 2,
-							additionalModifiers: []
-						}
-					},
-					arcana: {
-						skill: {
-							proficiency: true,
-							value: 1,
-							additionalModifiers: []
-						}
-					},
-					athletics: {
-						skill: {
-							proficiency: false,
-							value: 0,
-							additionalModifiers: []
-						}
-					},
-					deception: {
-						skill: {
-							proficiency: false,
-							value: 3,
-							additionalModifiers: []
-						}
-					},
-					history: {
-						skill: {
-							proficiency: true,
-							value: 1,
-							additionalModifiers: []
-						}
-					},
-					insight: {
-						skill: {
-							proficiency: true,
-							value: 2,
-							additionalModifiers: []
-						}
-					},
-					intimidation: {
-						skill: {
-							proficiency: false,
-							value: 3,
-							additionalModifiers: []
-						}
-					},
-					acrobatics: {
-						skill: {
-							proficiency: false,
-							value: 1,
-							additionalModifiers: []
-						}
-					},
-					investigation: {
-						skill: {
-							proficiency: true,
-							value: 1,
-							additionalModifiers: []
-						}
-					},
-					medicine: {
-						skill: {
-							proficiency: false,
-							value: 2,
-							additionalModifiers: []
-						}
-					},
-					perception: {
-						skill: {
-							proficiency: true,
-							value: 2,
-							additionalModifiers: []
-						}
-					},
-					persuasion: {
-						skill: {
-							proficiency: false,
-							value: 3,
-							additionalModifiers: []
-						}
-					},
-					religion: {
-						skill: {
-							proficiency: false,
-							value: 1,
-							additionalModifiers: []
-						}
-					},
-					sleightOfHand: {
-						skill: {
-							proficiency: false,
-							value: 1,
-							additionalModifiers: []
-						}
-					},
-					stealth: {
-						skill: {
-							proficiency: false,
-							value: 1,
-							additionalModifiers: []
-						}
-					},
-					survival: {
-						skill: {
-							proficiency: false,
-							value: 2,
-							additionalModifiers: []
-						}
-					}
-				},
-				speed: elf.stats.speed,
-				proficiencyBonus: 2
+				}
 			}
 		})
 		return db;
