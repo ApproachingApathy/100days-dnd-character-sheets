@@ -147,4 +147,4 @@ temp/
 
 # db settings
 db.json
-config.json
+configs/
