@@ -146,5 +146,4 @@ temp/
 # End of https://www.gitignore.io/api/macos,code,node
 
 # db settings
-db.json
 configs/
