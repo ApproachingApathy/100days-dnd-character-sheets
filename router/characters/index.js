@@ -31,23 +31,19 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/new", bodyParser.json(), (req, res) => {
-	if (
-		!req.body || 
-		!req.body.data || 
-		!req.body.data.longName
-	) {
-		res.status = 400,
-		res.json({error: "Bad Request"})
-		return false
+	if (!req.body || !req.body.data || !req.body.data.longName) {
+		res.status(400);
+		res.json({ error: "Bad Request" });
+		return false;
 	}
-	let data = req.body.data
-	let abilityScoreDefault = 8
+	let data = req.body.data;
+	let abilityScoreDefault = 8;
 	req.context.db.models.Character.create({
 		shortName: data.shortName || data.longName,
 		longName: data.longName,
 		race: data.raceId || null,
 		class: data.classId || null,
-		player: data.playerId || null,
+		player: req.user.id || null,
 		description: data.description || "",
 		age: data.age || "",
 		urlSlug: data.urlSlug || "",
@@ -55,14 +51,15 @@ router.post("/new", bodyParser.json(), (req, res) => {
 			abilities: {
 				strength: data.stats.abilities.strength || abilityScoreDefault,
 				dexterity: data.stats.abilities.dexterity || abilityScoreDefault,
-				constitution: data.stats.abilities.constitution || abilityScoreDefault,
-				intelligence: data.stats.abilities.intelligence || abilityScoreDefault,
+				constitution:
+					data.stats.abilities.constitution || abilityScoreDefault,
+				intelligence:
+					data.stats.abilities.intelligence || abilityScoreDefault,
 				wisdom: data.stats.abilities.wisdom || abilityScoreDefault,
 				charisma: data.stats.abilities.charisma || abilityScoreDefault
 			}
 		}
-	})
-	.then(result => res.json(result))
+	}).then(result => res.json(result));
 });
 
 module.exports = router;
