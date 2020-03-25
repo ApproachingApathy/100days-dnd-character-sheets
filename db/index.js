@@ -40,7 +40,7 @@ let connect = new Promise((resolve, reject) => {
 		})
 		.catch(err => {
 			logger.error("Couldn't connect to mongodb");
-			reject("Failed to connect to mongodb.");
+			reject(err);
 		});
 });
 

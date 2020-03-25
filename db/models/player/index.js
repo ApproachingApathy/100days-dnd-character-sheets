@@ -14,7 +14,7 @@ const Player= new Schema({
 		index: { unique: true} 
 	},
 	password: {
-		string: String,
+		type: String,
 		required: true,
 	}
 });

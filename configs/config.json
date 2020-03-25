@@ -2,5 +2,6 @@
 	"HOSTNAME": "192.168.0.9",
 	"PORT": 3000,
 	"ENVIROMENT": "development",
-	"LOGGER_LEVEL": "debug"
+	"LOGGER_LEVEL": "debug",
+	"SESSION_SECRET": "2bbcfeTbwL8xmLuiVUqygm3afQBzNp"
 }

@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
-const dbConfig = require('../configs/db.json')
+const dbConfig = require("../configs/db.json");
 
 global.logger = require("../helpers/create-logger")();
 
 mongoose.model("Race", require("./models/race"));
 mongoose.model("Class", require("./models/class"));
-mongoose.model("Character", require("./models/character"))
-mongoose.model("Player", require("./models/player"))
+mongoose.model("Character", require("./models/character"));
+mongoose.model("Player", require("./models/player"));
 
 mongoose
 	.connect(dbConfig.CONNECTION_URL, {
@@ -18,13 +18,13 @@ mongoose
 		await db.models.Race.create(seedData.races);
 		await db.models.Class.create(seedData.classes);
 
-		const elf = await db.models.Race.findOne({name: "Elf"})
-		const warlock = await db.models.Class.findOne({name: "Warlock"})
+		const elf = await db.models.Race.findOne({ name: "Elf" });
+		const warlock = await db.models.Class.findOne({ name: "Warlock" });
 		const player = await db.models.Player.create({
 			username: "admin",
 			email: "ephriamhenderson@ephriamhenderson.dev",
-			password: 'password'
-		})
+			password: await db.models.Player.hashPassword("password")
+		});
 
 		await db.models.Character.create({
 			shortName: "Aria",
@@ -42,10 +42,10 @@ mongoose
 					constitution: 10,
 					intelligence: 13,
 					wisdom: 14,
-					charisma: 16,
+					charisma: 16
 				}
 			}
-		})
+		});
 		return db;
 	})
 	.then(db => {

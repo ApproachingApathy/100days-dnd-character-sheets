@@ -1,46 +1,44 @@
 <div class="block-row">
-    <div class="box">
-        <h1><%= data.character.longName %></h1>
-        <caption><%= data.player.username %> </caption>
-        <div class="block-row">
-            <select name="raceSelect" id="raceSelect">
-                <% data.races.forEach(race => { %>
-                    <option value="<%= race.id %>"><%= race.name %> </option> 
-                <% }); %>
-            </select>
-            <div class="block">
-                <% Object.keys(data.character.stats.abilities).forEach( ability => { %>
-                    <% if (ability != "$init") { %> 
-                        <div class="block w-100">
-                            <h5>
-                                <%= ability.charAt(0).toUpperCase() +
-                                 ability.substring(1) %>
-                            </h5>
-                            <p class="ability-score">
-                                <%= data.character.stats.abilities[ability] %> 
-                            </p>
-                        </div>
-                    <% } %> 
-                <% }); %>
-                
-            </div>
-            <div class="block">
-                <div class="block-row">
-                    <div class="block">
-                        <p></p>
-                        <p>Armor Class</p>
-                    </div>
-                    <div class="block">
-                        <p></p>
-                        <p>Initiative</p>
-                    </div>
-                    <div class="block">
-                        <p></p>
-                        <p>Speed</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+	<div class="box">
+		<h1><%= data.character.longName %></h1>
+		<caption>
+			<%= data.player.username %>
+		</caption>
+		<div class="block-row">
+			<select name="raceSelect" id="raceSelect">
+				<% data.races.forEach(race => { %>
+				<option value="<%= race.id %>"><%= race.name %> </option>
+				<% }); %>
+			</select>
+			<div class="block">
+				<% Object.keys(data.character.stats.abilities).forEach( ability => {
+				%> <% if (ability != "$init") { %>
+				<div class="block w-100">
+					<h5>
+						<%= ability.charAt(0).toUpperCase() + ability.substring(1) %>
+					</h5>
+					<p class="ability-score">
+						<%= data.character.stats.abilities[ability] %>
+					</p>
+				</div>
+				<% } %> <% }); %>
+			</div>
+			<div class="block">
+				<div class="block-row">
+					<div class="block">
+						<p></p>
+						<p>Armor Class</p>
+					</div>
+					<div class="block">
+						<p></p>
+						<p>Initiative</p>
+					</div>
+					<div class="block">
+						<p></p>
+						<p>Speed</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
