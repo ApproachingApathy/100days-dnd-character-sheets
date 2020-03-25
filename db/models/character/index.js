@@ -19,22 +19,24 @@ const Skill = Schema({
 const Character = new Schema({
 	shortName: {
 		type: String,
-		required: true
+		required: true,
+		index: true
 	},
 	longName: {
 		type: String,
-		required: true
+		required: true,
+		index: true
 	},
 	race: {
-		type: [mongoose.ObjectId, null],
+		type: [mongoose.ObjectId, null]
 		// required: true
 	},
 	class: {
-		type: [mongoose.ObjectId, null],
+		type: [mongoose.ObjectId, null]
 		// required: true
 	},
 	player: {
-		type: [mongoose.ObjectId, null],
+		type: [mongoose.ObjectId, null]
 		// required: true
 	},
 	description: {
@@ -44,7 +46,7 @@ const Character = new Schema({
 	age: Number,
 	urlSlug: {
 		type: String,
-		default: ''
+		default: ""
 	},
 	stats: {
 		abilities: {
@@ -266,33 +268,30 @@ const Character = new Schema({
 	}
 });
 
-
-Character.pre('save', function(next, docs) {
-
+Character.pre("save", function(next, docs) {
 	// Loop through skills
 	Object.keys(this.stats.skills).forEach(key => {
-		let skill = this.stats.skills[key]
+		let skill = this.stats.skills[key];
 		skill.skill.value = Math.floor(
 			// Calculate modifier
 			(this.stats.abilities[skill.ability] - 10) / 2
-		)
-	})
-	
-	let Race = this.model('Race')
+		);
+	});
+
+	let Race = this.model("Race");
 
 	// Get the characters speed from their race.
-	// This will likely be changed because the 
+	// This will likely be changed because the
 	// character speed may change.
 	Race.findOne({ _id: this.race })
-	.then(characterRace => {
-		if (characterRace) {
-			this.stats.speed = characterRace.stats.speed
-		}
-	})
-	.then(() => {
-		next()
-	})
+		.then(characterRace => {
+			if (characterRace) {
+				this.stats.speed = characterRace.stats.speed;
+			}
+		})
+		.then(() => {
+			next();
+		});
+});
 
-})
-
-module.exports = Character
+module.exports = Character;
