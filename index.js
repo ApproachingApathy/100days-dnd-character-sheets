@@ -45,7 +45,7 @@ app.use(async (req, res, next) => {
 app.use(require("./router"));
 
 const server = app.listen(
-	appConfig.PORT,
+	appConfig.PORT || 3000,
 	appConfig.HOSTNAME || "127.0.0.1",
 	() => {
 		const hostname = server.address().address;
