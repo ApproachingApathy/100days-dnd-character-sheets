@@ -1,5 +1,5 @@
-@import 'base';
-@import 'flex';
-@import 'block';
-
-@import 'container'
+@import "variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "bootswatch";
+@import "base";
+@import "navbar";

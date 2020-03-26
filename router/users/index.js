@@ -5,21 +5,15 @@ const assert = require("assert");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-	req.context.models.Player.find().then(players => {
-		res.render("users", {
-			data: {
-				users: players || []
-			}
-		});
-	});
-});
-
 router.get("/login", (req, res) => {
 	if (req.isAuthenticated()) {
 		res.redirect("/");
 	} else {
-		res.send("Login Page");
+		res.render("users/login", {
+			page: {
+				title: "Login-Signup"
+			}
+		});
 	}
 });
 
@@ -40,7 +34,9 @@ router.post(
 	"/signup",
 	bodyParser.urlencoded({ extended: true }),
 	async (req, res) => {
+		console.log(req.body);
 		const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,50})/;
 		try {
 			assert(req.body, "Bad Request");
 			assert(
@@ -61,6 +57,11 @@ router.post(
 				emailPattern.test(req.body.email),
 				"Bad Request: Email Incorrectly Formatted"
 			);
+			assert(
+				passwordPattern.test(req.body.password),
+				"Bad Request: Password does not meet requirements"
+			);
+			assert();
 		} catch (err) {
 			res.status(400);
 			res.json({ error: err.toString() });
