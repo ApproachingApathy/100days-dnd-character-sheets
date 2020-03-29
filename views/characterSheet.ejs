@@ -1,42 +1,124 @@
-<div class="block-row">
-	<div class="box">
-		<h1><%= data.character.longName %></h1>
-		<caption>
-			<%= data.player.username %>
-		</caption>
-		<div class="block-row">
-			<select name="raceSelect" id="raceSelect">
-				<% data.races.forEach(race => { %>
-				<option value="<%= race.id %>"><%= race.name %> </option>
-				<% }); %>
-			</select>
-			<div class="block">
-				<% Object.keys(data.character.stats.abilities).forEach( ability => {
-				%> <% if (ability != "$init") { %>
-				<div class="block w-100">
+<div class="col-md">
+	<div class="row">
+		<div class="col-md">
+			<h1><%= data.character.longName %></h1>
+			<p><%= data.player.username %></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1 text-center">
+			<% Object.keys(data.character.stats.abilities).forEach( ability => { %>
+			<% if (ability != "$init") { %>
+			<div class="row">
+				<h5>
+					<%= ability.charAt(0).toUpperCase() + ability.substring(1) %>
+				</h5>
+				<p class="ability-score">
+					<%= data.character.stats.abilities[ability] %>
+				</p>
+			</div>
+			<% } %> <% }); %>
+		</div>
+		<div class="col-md-3">
+			<% Object.keys(data.character.stats.skills).forEach( skill => { %> <%
+			if (skill != '$init') { %>
+			<div class="row">
+				<div class="col-md">
 					<h5>
-						<%= ability.charAt(0).toUpperCase() + ability.substring(1) %>
+						<%= skill.charAt(0).toUpperCase() + skill.substring(1)%>
 					</h5>
-					<p class="ability-score">
-						<%= data.character.stats.abilities[ability] %>
+				</div>
+				<div class="col-md">
+					<p>
+						<%= data.character.stats.skills[skill].skill.value > 0 ? `+
+						${data.character.stats.skills[skill].skill.value}` :
+						data.character.stats.skills[skill].skill.value %>
 					</p>
 				</div>
-				<% } %> <% }); %>
+				<p>
+					<%= data.character.stats.skills[skill].skill.proficiency ?
+					"Proficient" : ""%>
+				</p>
 			</div>
-			<div class="block">
-				<div class="block-row">
-					<div class="block">
-						<p></p>
-						<p>Armor Class</p>
+			<% } %> <% }) %>
+		</div>
+		<div class="col-md">
+			<div class="row">
+				<div class="col-md">
+					<h3>Hit Points</h3>
+					<h4>Maximum: <%= data.character.stats.hitPoints.maximum %></h4>
+					<h4>Current: <%= data.character.stats.hitPoints.current %></h4>
+					<h4>
+						Temporary: <%= data.character.stats.hitPoints.temporary %>
+					</h4>
+				</div>
+			</div>
+				<div class="row">
+					<div class="col-md">
+						<h3>Attacks</h3>
+						<table>
+							<thead>
+								<tr>
+									<td>
+										Name
+									</td>
+									<td>
+										Atk Bonus	
+									</td>
+									<td>
+										Damage/Type	
+									</td>	
+								</tr>	
+							</thead>
+							<tbody>
+								<tr>
+									<td> Placeholder </td>
+									<td> Placeholder </td>
+									<td> Placeholder </td>
+								</tr>	
+							</tbody>	
+						</table>		
 					</div>
-					<div class="block">
-						<p></p>
-						<p>Initiative</p>
+				</div>
+			</div>
+			<div class="col-md">
+				<div class="row">
+					<div class="col-md">
+						<p>
+							Hey! My name is! Placeholder
+						</p>
+						<h5>Personality Traits</h5>		
 					</div>
-					<div class="block">
-						<p></p>
-						<p>Speed</p>
+				</div>
+				<div class="row">
+					<div class="col-md">
+						<p>
+							Hey! My name is! Placeholder
+						</p>
+						<h5>Ideals</h5>	
 					</div>
+				</div>
+				<div class="row">
+					<div class="col-md">
+						<p>
+							Hey! My name is! Placeholder
+						</p>
+						<h5>Bonds</h5>	
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md">
+						<p>
+							Hey! My name is! Placeholder
+						</p>
+						<h5>Flaws</h5>	
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md">
+						<p>Features Placeholder</p>
+						<h5>Features & Traits</h5>
+					</div>	
 				</div>
 			</div>
 		</div>

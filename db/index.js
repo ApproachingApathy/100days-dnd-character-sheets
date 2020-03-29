@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const fs = require("fs");
 const path = require("path");
 
-const dbConfig = require('../configs/db.json')
+const dbConfig = require("../configs/db.json");
 
 module.exports;
 function buildModels() {
@@ -23,30 +23,33 @@ function buildModels() {
 	return models;
 }
 
-let connect = new Promise((resolve, reject) => {
-	mongoose
-		.connect(dbConfig.CONNECTION_URL, {
-			useNewUrlParser: true,
-			useUnifiedTopology: true
-		})
-		.then(db => {
-			let connectTime = new Date();
-			logger.info(
-				`Connected to mongodb at ${connectTime.toLocaleDateString()} ${connectTime.toLocaleTimeString()}`
-			);
-			buildModels();
+let connect = () => {
+	return new Promise((resolve, reject) => {
+		mongoose
+			.connect(dbConfig.CONNECTION_URL, {
+				useNewUrlParser: true,
+				useUnifiedTopology: true
+			})
+			.then(db => {
+				let connectTime = new Date();
+				logger.info(
+					`Connected to mongodb at ${connectTime.toLocaleDateString()} ${connectTime.toLocaleTimeString()}`
+				);
+				buildModels();
 
-			resolve(db);
-		})
-		.catch(err => {
-			logger.error("Couldn't connect to mongodb");
-			reject(err);
-		});
-});
+				resolve(db);
+			})
+			.catch(err => {
+				logger.error("Couldn't connect to mongodb, Trying again...");
+				// reject(err);
+				connect();
+			});
+	});
+};
 
 /**
  * Return models and a db models.
  */
 module.exports = (async () => {
-	return await connect;
+	return await connect();
 })();

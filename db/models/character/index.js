@@ -46,7 +46,8 @@ const Character = new Schema({
 	age: Number,
 	urlSlug: {
 		type: String,
-		default: ""
+		default: "",
+		index: true
 	},
 	stats: {
 		abilities: {
@@ -264,7 +265,44 @@ const Character = new Schema({
 		proficiencyBonus: {
 			type: Number,
 			default: 2
+		},
+		armorClass: {
+			type: Number,
+			default: 0
+		},
+		initiative: {
+			type: Number,
+			default: 0
+		},
+		hitPoints: {
+			maximum: {
+				type: Number,
+				default: 10
+			},
+			current: {
+				type: Number,
+				default: 10
+			},
+			temporary: {
+				type: Number,
+				default: 0
+			}
 		}
+	},
+	features: {
+		type: [
+			{
+				name: {
+					type: String,
+					default: ""
+				},
+				description: {
+					type: String,
+					default: ""
+				}
+			}
+		],
+		default: []
 	}
 });
 
