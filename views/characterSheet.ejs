@@ -2,6 +2,105 @@
 	<div class="row">
 		<div class="col-md">
 			<h1><%= data.character.longName %></h1>
+			<small><%= data.player.username %></small>
+			<hr />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md">
+			<div class="row">
+				<div
+					class="d-flex justify-content-center align-items-center bg-info h-50 w-75 m-5"
+				>
+					<div class="col-md">
+						<dl class="row">
+							<div class="col-md">
+								<div class="row">
+									<div class="col">
+										<div class="row">
+											<dt class="col-md">Strength</dt>
+											<dd class="col-md">
+												<%= data.character.stats.abilities.strength
+												%>
+											</dd>
+											<hr />
+											<dl class="row">
+												<dt class="col-md">
+													Stuff
+												</dt>
+											</dl>
+										</div>
+
+										<dt class="col-md">Dexterity</dt>
+										<dd class="col-md">
+											<%= data.character.stats.abilities.dexterity %>
+											<hr />
+											<dl class="row">
+												<dt class="col-md">
+													Stuff
+												</dt>
+											</dl>
+										</dd>
+										<dt class="col-md">Constitution</dt>
+										<dd class="col-md">
+											<%= data.character.stats.abilities.constitution
+											%>
+											<hr />
+											<dl class="row">
+												<dt class="col-md">
+													Stuff
+												</dt>
+											</dl>
+										</dd>
+										<dt class="col-md">Intelligence</dt>
+										<dd class="col-md">
+											<%= data.character.stats.abilities.intelligence
+											%>
+											<hr />
+											<dl class="row">
+												<dt class="col-md">
+													Stuff
+												</dt>
+											</dl>
+										</dd>
+										<dt class="col-md">Wisdom</dt>
+										<dd class="col-md">
+											<%= data.character.stats.abilities.wisdom %>
+											<hr />
+											<dl class="row">
+												<dt class="col-md">
+													Stuff
+												</dt>
+											</dl>
+										</dd>
+										<dt class="col-md">Charisma</dt>
+										<dd class="col-md">
+											<%= data.character.stats.abilities.charisma %>
+											<hr />
+											<dl class="row">
+												<dt class="col-md">
+													Stuff
+												</dt>
+											</dl>
+										</dd>
+									</div>
+								</div>
+							</div>
+						</dl>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md"></div>
+		<div class="col-md"></div>
+	</div>
+</div>
+
+<!-- 
+<div class="col-md">
+	<div class="row">
+		<div class="col-md">
+			<h1><%= data.character.longName %></h1>
 			<p><%= data.player.username %></p>
 		</div>
 	</div>
@@ -123,4 +222,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
