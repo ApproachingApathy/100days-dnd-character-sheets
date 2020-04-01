@@ -3,96 +3,444 @@
 		<div class="col-md">
 			<h1><%= data.character.longName %></h1>
 			<small><%= data.player.username %></small>
-			<hr />
+			<hr class="text-white" />
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md">
 			<div class="row">
 				<div
-					class="d-flex justify-content-center align-items-center bg-info h-50 w-75 m-5"
+					class="d-flex justify-content-center align-items-center bg-info m-3 w-100"
 				>
 					<div class="col-md">
-						<dl class="row">
+						<div class="row">
 							<div class="col-md">
 								<div class="row">
-									<div class="col">
-										<div class="row">
-											<dt class="col-md">Strength</dt>
-											<dd class="col-md">
-												<%= data.character.stats.abilities.strength
-												%>
-											</dd>
-											<hr />
-											<dl class="row">
-												<dt class="col-md">
-													Stuff
-												</dt>
-											</dl>
+									<div class="col-md px-3">
+										<div class="row border">
+											<div class="col-md-4 border-right">
+												<dt>Strength</dt>
+												<dd>
+													<%=
+													data.character.stats.abilities.strength
+													%>
+												</dd>
+											</div>
+											<div class="col-md">
+												<dl class="row">
+													<dt class="col-sm-9">
+														Athletics
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.athletics.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+											</div>
 										</div>
-
-										<dt class="col-md">Dexterity</dt>
-										<dd class="col-md">
-											<%= data.character.stats.abilities.dexterity %>
-											<hr />
-											<dl class="row">
-												<dt class="col-md">
-													Stuff
-												</dt>
-											</dl>
-										</dd>
-										<dt class="col-md">Constitution</dt>
-										<dd class="col-md">
-											<%= data.character.stats.abilities.constitution
-											%>
-											<hr />
-											<dl class="row">
-												<dt class="col-md">
-													Stuff
-												</dt>
-											</dl>
-										</dd>
-										<dt class="col-md">Intelligence</dt>
-										<dd class="col-md">
-											<%= data.character.stats.abilities.intelligence
-											%>
-											<hr />
-											<dl class="row">
-												<dt class="col-md">
-													Stuff
-												</dt>
-											</dl>
-										</dd>
-										<dt class="col-md">Wisdom</dt>
-										<dd class="col-md">
-											<%= data.character.stats.abilities.wisdom %>
-											<hr />
-											<dl class="row">
-												<dt class="col-md">
-													Stuff
-												</dt>
-											</dl>
-										</dd>
-										<dt class="col-md">Charisma</dt>
-										<dd class="col-md">
-											<%= data.character.stats.abilities.charisma %>
-											<hr />
-											<dl class="row">
-												<dt class="col-md">
-													Stuff
-												</dt>
-											</dl>
-										</dd>
+										<div class="row border">
+											<div class="col-md-4 border-right">
+												<dt>Dexterity</dt>
+												<dd>
+													<%=
+													data.character.stats.abilities.dexterity
+													%>
+												</dd>
+											</div>
+											<div class="col-md">
+												<dl class="row">
+													<dt class="col-sm-9">
+														Acrobatics
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.acrobatics.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+												<dl class="row">
+													<dt class="col-sm-9">
+														Sleight of Hand
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.sleightOfHand.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+												<dl class="row">
+													<dt class="col-sm-9">
+														Stealth
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.stealth.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+											</div>
+										</div>
+										<div class="row border">
+											<div class="col-md-4 border-right">
+												<dt>Constitution</dt>
+												<dd>
+													<%=
+													data.character.stats.abilities.constitution
+													%>
+												</dd>
+											</div>
+											<div class="col-md"></div>
+										</div>
+										<div class="row border">
+											<div class="col-md-4 border-right">
+												<dt>Intelligence</dt>
+												<dd>
+													<%=
+													data.character.stats.abilities.intelligence
+													%>
+												</dd>
+											</div>
+											<div class="col-md">
+												<dl class="row">
+													<dt class="col-sm-9">
+														Arcana
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.arcana.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+												<dl class="row">
+													<dt class="col-sm-9">
+														History
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.history.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+												<dl class="row">
+													<dt class="col-sm-9">
+														Investigation
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.investigation.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+												<dl class="row">
+													<dt class="col-sm-9">
+														Nature
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.nature.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+												<dl class="row">
+													<dt class="col-sm-9">
+														Religion
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.religion.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+											</div>
+										</div>
+										<div class="row border">
+											<div class="col-md-4 border-right">
+												<dt>Wisdom</dt>
+												<dd>
+													<%= data.character.stats.abilities.wisdom
+													%>
+												</dd>
+											</div>
+											<div class="col-md">
+												<dl class="row">
+													<dt class="col-sm-9">
+														Animal Handling
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.animalHandling.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+												<dl class="row">
+													<dt class="col-sm-9">
+														Insight
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.insight.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+												<dl class="row">
+													<dt class="col-sm-9">
+														Medicine
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.medicine.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+												<dl class="row">
+													<dt class="col-sm-9">
+														Perception
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.perception.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+												<dl class="row">
+													<dt class="col-sm-9">
+														Survival
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.survival.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+											</div>
+										</div>
+										<div class="row border">
+											<div class="col-md-4 border-right">
+												<dt>Charisma</dt>
+												<dd>
+													<%=
+													data.character.stats.abilities.charisma
+													%>
+												</dd>
+											</div>
+											<div class="col-md">
+												<dl class="row">
+													<dt class="col-sm-9">
+														Deception
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.deception.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+												<dl class="row">
+													<dt class="col-sm-9">
+														Intimidation
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.intimidation.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+												<dl class="row">
+													<dt class="col-sm-9">
+														Performance
+													</dt>
+													<dd class="col-sm-3">
+														<%=
+														data.character.stats.skills.performance.skill.value
+														|| 0 %>
+													</dd>
+												</dl>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-						</dl>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-md"></div>
-		<div class="col-md"></div>
+		<div class="col-md">
+			<div class="row my-5">
+				<div class="col-md">
+					<div class="d-flex justify-content-around">
+						<div
+							class="d-flex justify-content-center align-items-center bg-info"
+						>
+							<div class="col-md text-center">
+								<h4><%= data.character.stats.speed %></h4>
+								<p>Speed</p>
+							</div>
+						</div>
+						<div
+							class="d-flex justify-content-center align-items-center bg-info"
+						>
+							<div class="col-md text-center">
+								<h4><%= data.character.stats.initiative %></h4>
+								<p>Initiative</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row my-5">
+				<div class="col-md">
+					<div class="row">
+						<div class="col-md bg-info">
+							<div class="row">
+								<div class="col-md">
+									<div
+										class="d-flex justify-content-center align-items-center"
+									>
+										<div class="col-md text-center">
+											<h4><%= data.character.stats.armorClass %></h4>
+											<p>Armor Class</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md">
+									<div
+										class="d-flex justify-content-center align-items-center"
+									>
+										<div class="col-md text-center">
+											<h4>
+												<%= data.character.stats.hitPoints.temporary
+												%>
+											</h4>
+											<p>Temp Hit Points</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md">
+									<div
+										class="d-flex justify-content-center align-items-center"
+									>
+										<div class="col-md text-center">
+											<h4>
+												<%= data.character.stats.hitPoints.current
+												%> / <%=
+												data.character.stats.hitPoints.maximum %>
+											</h4>
+											<p>Hit Points</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md">
+									<div
+										class="d-flex justify-content-center align-items-center"
+									>
+										<div class="col-md text-center">
+											<h4>
+												<%= data.character.stats.hitPoints.hitDice
+												|| 0 %>
+											</h4>
+											<p>Hit Dice</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md">
+									<div
+										class="d-flex justify-content-center align-items-center"
+									>
+										<div class="col-md text-center">
+											<p>
+												<%= "0 Successes" %> <br />
+												<%= "0 Failures" %>
+											</p>
+											<p>Death Saves</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md bg-info my-3">
+					<table class="table">
+						<tHead>
+							<tr>
+								<th colspan="3">
+									Attacks & Spells
+								</th>
+							</tr>
+							<tr>
+								<th>
+									Name
+								</th>
+								<th>
+									ATK Bonus
+								</th>
+								<th>
+									Damage
+								</th>
+							</tr>
+						</tHead>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-md">
+			<div class="row">
+				<div class="col-md">
+					<div class="col-md bg-info my-3">
+						<div class="row">
+							<div class="col-md">
+								<h4>Personality Traits</h4>
+								<p>
+									Personality
+								</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<h4>Ideals</h4>
+								<p>
+									Ideal
+								</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<h4>Bonds</h4>
+								<p>Bond</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<h4>Flaws</h4>
+								<p>Flaw</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md">
+					<div class="col-md bg-info my-3">
+						<div class="row">
+							<div class="col-md">
+								<h4>Features and Trait</h4>
+								<dl>
+									<dt>Spy</dt>
+									<dd>Criminal Subvariant(PLACEHOLDER)</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -129,9 +477,9 @@
 				</div>
 				<div class="col-md">
 					<p>
-						<%= data.character.stats.skills[skill].skill.value > 0 ? `+
-						${data.character.stats.skills[skill].skill.value}` :
-						data.character.stats.skills[skill].skill.value %>
+						<%= data.character.stats.skills[skill].skill.value || 0 > 0 ? `+
+						${data.character.stats.skills[skill].skill.value || 0}` :
+						data.character.stats.skills[skill].skill.value || 0 %>
 					</p>
 				</div>
 				<p>

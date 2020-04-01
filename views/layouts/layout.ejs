@@ -16,7 +16,13 @@
 	</head>
 	<body>
 		<div class="container-fluid">
-			<div class="row">
+			<header class="row">
+				<nav class="navbar navbar-dark bg-info col-md fixed-top">
+					<a href="/" class="navbar-brand">D&D Sheets</a>
+					<a href="/users/login" class="btn">Login</a>
+				</nav>
+			</header>
+			<div class="row" style="padding-top: 4.8em;">
 				<div class="col-md-2 p-0">
 					<div
 						id="sidebar"
@@ -30,17 +36,11 @@
 					</div>
 				</div>
 				<div class="col-md">
-					<div class="row">
-						<nav class="navbar navbar-dark bg-info col-md">
-							<a href="/" class="navbar-brand">D&D Sheets</a>
-							<a href="/users/login" class="btn">Login</a>
-						</nav>
-					</div>
 					<div id="main" class="row">
 						<div class="col-md">
-							<div class="row">
+							<main class="row">
 								<%-body %>
-							</div>
+							</main>
 						</div>
 					</div>
 				</div>

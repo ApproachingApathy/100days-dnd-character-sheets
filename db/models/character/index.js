@@ -187,6 +187,16 @@ const Character = new Schema({
 					default: Skill
 				}
 			},
+			nature: {
+				ability: {
+					type: String,
+					default: "intelligence"
+				},
+				skill: {
+					type: Skill,
+					default: Skill
+				}
+			},
 			perception: {
 				ability: {
 					type: String,
@@ -286,6 +296,10 @@ const Character = new Schema({
 			temporary: {
 				type: Number,
 				default: 0
+			},
+			hitDice: {
+				type: String,
+				default: "1d6"
 			}
 		}
 	},
