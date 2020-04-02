@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/writer", (req, res) => {
-	res.render("characterWriter");
+	res.render("characters/characterWriter");
 });
 
 router.get("/:id", async (req, res) => {
@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
 		_id: character.player
 	});
 
-	res.render("characterSheet", {
+	res.render("characters/characterSheet", {
 		data: {
 			character,
 			player,
