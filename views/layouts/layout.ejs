@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,15 +14,15 @@
 		<script src="/js/bootstrap.bundle.min.js" defer></script>
 		<%-defineContent('scriptsTop') %>
 	</head>
-	<body>
-		<div class="container-fluid">
+	<body class="h-100">
+		<div class="container-fluid h-100">
 			<header class="row">
 				<nav class="navbar navbar-dark bg-info col-md fixed-top">
 					<a href="/" class="navbar-brand">D&D Sheets</a>
 					<a href="/users/login" class="btn">Login</a>
 				</nav>
 			</header>
-			<div class="row" style="padding-top: 4.8em;">
+			<div class="row h-100" style="padding-top: 4.8em;">
 				<div class="col-md-2 p-0">
 					<div
 						id="sidebar"
@@ -36,9 +36,9 @@
 					</div>
 				</div>
 				<div class="col-md">
-					<div id="main" class="row">
+					<div id="main" class="row h-100">
 						<div class="col-md">
-							<main class="row">
+							<main class="row h-100">
 								<%-body %>
 							</main>
 						</div>

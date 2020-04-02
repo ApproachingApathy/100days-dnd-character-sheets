@@ -1,1 +1,136 @@
-<div class="col-md bg-info d-flex flex-fill"></div>
+<div class="col-md bg-info d-flex h-100">
+	<div class="d-flex align-items-center justify-content-center w-100">
+		<div id="writer-container" class="d-flex flex-column">
+			<h1 id="writer-question" class="text-center">
+				Welcome to The Character Writer
+			</h1>
+			<br />
+			<div id="writer-options" class="d-flex justify-content-around"></div>
+			<div class="d-flex justify-content-around">
+				<button id="prev-button" class="btn" hidden>Previous</button>
+				<button id="next-button" class="btn">Next</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%- contentFor('scriptsBottom') %>
+<script>
+	// $(document).ready(() => {
+	document.addEventListener("DOMContentLoaded", () => {
+		const questions = [
+			{
+				question: "What's Your Gender?",
+				options: [
+					{
+						text: "Male",
+						results: "I am a Male."
+					},
+					{
+						text: "Female",
+						results: "I am a Female."
+					},
+					{
+						text: "Something Else",
+						results: "I am non-binary."
+					}
+				]
+			},
+			{
+				question: "How do you look?",
+				options: []
+			},
+			{
+				question: "How tall are you?",
+				options: [
+					{
+						text: "Very Short",
+						results: "I'm Very Short."
+					},
+					{
+						text: "A little short.",
+						result: "I'm a little shorter than most."
+					},
+					{
+						text: "Average",
+						result: "I'm around average height."
+					},
+					{
+						text: "Taller than average",
+						result: "I'm Taller than average"
+					},
+					{
+						text: "Very Tall",
+						result: "I tower over most others."
+					}
+				]
+			}
+		];
+
+		class Writer {
+			constructor(init) {
+				this.$container = $("#writer-container");
+				this.page = -1;
+				this.$question = $("#writer-question");
+				this.$options = $("#writer-options");
+				this.questions = init.questions || [];
+				this.choices = {};
+				$("#next-button").on("click", e => this.advance());
+				$("#prev-button").on("click", e => this.reverse());
+				$("#writer-options").on("click", e => {
+					const $target = $(e.target);
+					if ($target.prop("tagName") == "BUTTON") {
+						this.choices[$target.attr("data-question")] = $target.attr(
+							"data-choice"
+						);
+						this.advance();
+					}
+					console.log(this.choices);
+				});
+			}
+
+			_createOptionButtons() {
+				return this.questions[this.page].options.map((option, index) => {
+					return $("<button>")
+						.addClass("btn myOption")
+						.attr("id", `option-${index}`)
+						.attr("data-choice", index)
+						.attr("data-question", this.page)
+						.text(option.text);
+				});
+			}
+
+			advance() {
+				console.log("Start");
+				if (this.page < this.questions.length - 1) {
+					this.page++;
+					this.$container.attr("data-page", this.page);
+					this.$question.text(this.questions[this.page].question);
+					this.$options.empty();
+					let optionButtons = this._createOptionButtons();
+					this.$options.append(optionButtons);
+					if (this.page > 0) $("#prev-button").removeAttr("hidden");
+					if (this.page >= this.questions.length - 1)
+						$("#next-button").attr("hidden", true);
+				}
+			}
+
+			reverse() {
+				if (this.page > 0) {
+					this.page--;
+					this.$container.attr("data-page", this.page);
+					this.$question.text(this.questions[this.page].question);
+					this.$options.empty();
+					let optionButtons = this._createOptionButtons();
+					this.$options.append(optionButtons);
+					if (this.page < 1) $("#prev-button").attr("hidden", true);
+					if (this.page < this.questions.length - 1)
+						$("#next-button").removeAttr("hidden");
+				}
+			}
+		}
+		const writer = new Writer({ questions });
+	});
+
+	// });
+</script>

@@ -7,6 +7,10 @@ router.get("/", (req, res) => {
 	res.send("character page");
 });
 
+router.get("/writer", (req, res) => {
+	res.render("characterWriter");
+});
+
 router.get("/:id", async (req, res) => {
 	const character = await req.context.db.models.Character.findOne({
 		_id: req.params.id
