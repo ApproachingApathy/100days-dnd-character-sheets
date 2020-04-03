@@ -16,247 +16,134 @@
 						<div class="row">
 							<div class="col-md">
 								<div class="row">
+									<!-- prettier-ignore -->
 									<div class="col-md px-3">
-										<div class="row border">
-											<div class="col-md-4 border-right">
-												<dt>Strength</dt>
-												<dd>
-													<%=
-													data.character.stats.abilities.strength
-													%>
-												</dd>
-											</div>
-											<div class="col-md">
-												<dl class="row">
-													<dt class="col-sm-9">
-														Athletics
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.athletics.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-											</div>
-										</div>
-										<div class="row border">
-											<div class="col-md-4 border-right">
-												<dt>Dexterity</dt>
-												<dd>
-													<%=
-													data.character.stats.abilities.dexterity
-													%>
-												</dd>
-											</div>
-											<div class="col-md">
-												<dl class="row">
-													<dt class="col-sm-9">
-														Acrobatics
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.acrobatics.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-												<dl class="row">
-													<dt class="col-sm-9">
-														Sleight of Hand
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.sleightOfHand.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-												<dl class="row">
-													<dt class="col-sm-9">
-														Stealth
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.stealth.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-											</div>
-										</div>
-										<div class="row border">
-											<div class="col-md-4 border-right">
-												<dt>Constitution</dt>
-												<dd>
-													<%=
-													data.character.stats.abilities.constitution
-													%>
-												</dd>
-											</div>
-											<div class="col-md"></div>
-										</div>
-										<div class="row border">
-											<div class="col-md-4 border-right">
-												<dt>Intelligence</dt>
-												<dd>
-													<%=
-													data.character.stats.abilities.intelligence
-													%>
-												</dd>
-											</div>
-											<div class="col-md">
-												<dl class="row">
-													<dt class="col-sm-9">
-														Arcana
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.arcana.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-												<dl class="row">
-													<dt class="col-sm-9">
-														History
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.history.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-												<dl class="row">
-													<dt class="col-sm-9">
-														Investigation
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.investigation.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-												<dl class="row">
-													<dt class="col-sm-9">
-														Nature
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.nature.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-												<dl class="row">
-													<dt class="col-sm-9">
-														Religion
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.religion.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-											</div>
-										</div>
-										<div class="row border">
-											<div class="col-md-4 border-right">
-												<dt>Wisdom</dt>
-												<dd>
-													<%= data.character.stats.abilities.wisdom
-													%>
-												</dd>
-											</div>
-											<div class="col-md">
-												<dl class="row">
-													<dt class="col-sm-9">
-														Animal Handling
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.animalHandling.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-												<dl class="row">
-													<dt class="col-sm-9">
-														Insight
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.insight.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-												<dl class="row">
-													<dt class="col-sm-9">
-														Medicine
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.medicine.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-												<dl class="row">
-													<dt class="col-sm-9">
-														Perception
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.perception.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-												<dl class="row">
-													<dt class="col-sm-9">
-														Survival
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.survival.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-											</div>
-										</div>
-										<div class="row border">
-											<div class="col-md-4 border-right">
-												<dt>Charisma</dt>
-												<dd>
-													<%=
-													data.character.stats.abilities.charisma
-													%>
-												</dd>
-											</div>
-											<div class="col-md">
-												<dl class="row">
-													<dt class="col-sm-9">
-														Deception
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.deception.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-												<dl class="row">
-													<dt class="col-sm-9">
-														Intimidation
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.intimidation.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-												<dl class="row">
-													<dt class="col-sm-9">
-														Performance
-													</dt>
-													<dd class="col-sm-3">
-														<%=
-														data.character.stats.skills.performance.skill.value
-														|| 0 %>
-													</dd>
-												</dl>
-											</div>
-										</div>
+										<% const PATH_TO_SKILL_INCLUDE = "./includes/skill.ejs" %> 
+										<%- 
+											include(PATH_TO_SKILL_INCLUDE, {
+												ability: {
+													name: "Strength", 
+													value: data.character.stats.abilities.strength 
+												},
+												skills:[ 
+													{ 
+														name: "Athletics",
+														value:data.character.stats.skills.athletics.skill.value
+													}
+												]
+										}) 
+										%> 
+										<%- 
+											include(PATH_TO_SKILL_INCLUDE, {
+												ability: {
+													name: "Dexterity",
+													value: data.character.stats.abilities.dexterity
+												},
+												skills: [
+													{
+														name: "Acrobatics",
+														value: data.character.stats.skills.acrobatics.skill.value
+													},
+													{
+														name: "Sleight of Hand",
+														value: data.character.stats.skills.sleightOfHand.skill.value
+													},
+													{
+														name: "Stealth",
+														value: data.character.stats.skills.stealth.skill.value
+													}
+												]
+											}) 
+										%>
+										<%- 
+											include(PATH_TO_SKILL_INCLUDE, {
+												ability: {
+													name: "Constitution",
+													value: data.character.stats.abilities.constitution
+												},
+											}) 
+										%>
+										<%- 
+											include(PATH_TO_SKILL_INCLUDE, {
+												ability: {
+													name: "Intelligence",
+													value:data.character.stats.abilities.intelligence
+												},
+												skills: [
+													{
+														name: "Arcana",
+														value: data.character.stats.skills.arcana.skill.value
+													},
+													{
+														name: "History",
+														value: data.character.stats.skills.history.skill.value
+													},
+													{
+														name: "Investigation",
+														value: data.character.stats.skills.investigation.skill.value
+													},
+													{
+														name: "Nature",
+														value: data.character.stats.skills.nature.skill.value
+													},
+													{
+														name: "Religion",
+														value: data.character.stats.skills.religion.skill.value
+													}
+												]})
+										%>
+										<%- 
+											include(PATH_TO_SKILL_INCLUDE, {
+												ability: {
+													name: "Wisdom",
+													value: data.character.stats.abilities.wisdom
+												},
+												skills: [
+													{
+														name: "Animal Handling",
+														value: data.character.stats.skills.animalHandling.skill.value
+													},
+													{
+														name: "Insight",
+														value: data.character.stats.skills.insight.skill.value
+													},
+													{
+														name: "Medicine",
+														value: data.character.stats.skills.medicine.skill.value
+													},
+													{
+														name: "Perception",
+														value: data.character.stats.skills.perception.skill.value
+													},
+													{
+														name: "Survival",
+														value: data.character.stats.skills.survival.skill.value
+													}
+												]
+											})
+										%>
+										<%-  
+											include(PATH_TO_SKILL_INCLUDE, {
+												ability: {
+													name: "Charisma",
+													value: data.character.stats.abilities.charisma
+												},
+												skills: [
+													{
+														name: "Deception",
+														value: data.character.stats.skills.deception.skill.value
+													},
+													{
+														name: "Intimidation",
+														value: data.character.stats.skills.intimidation.skill.value
+													},
+													{
+														name: "Performance",
+														value: data.character.stats.skills.performance.skill.value
+													}
+												]
+											})
+										%> 
 									</div>
 								</div>
 							</div>

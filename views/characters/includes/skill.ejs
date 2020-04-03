@@ -1,0 +1,21 @@
+<div class="row border">
+	<div class="col-md-4 border-right">
+		<dt><%= ability.name %></dt>
+		<dd>
+			<%= ability.value || 0%>
+		</dd>
+	</div>
+	<!-- prettier-ignore -->
+	<div class="col-md">
+		<%(typeof skills == 'undefined' ? [] : skills).forEach(skill => { %>
+		<dl class="row">
+			<dt class="col-sm-9">
+				<%= skill.name || "No Name"%>
+			</dt>
+			<dd class="col-sm-3">
+				<%= skill.value || 0 %>
+			</dd>
+		</dl>
+		<% }) %>
+	</div>
+</div>
