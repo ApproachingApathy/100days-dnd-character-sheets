@@ -3,6 +3,8 @@ const expressLayouts = require("express-ejs-layouts");
 const sass = require("node-sass-middleware");
 const session = require("express-session");
 const passport = require("passport");
+const mongoose = require("mongoose");
+const MongoStore = require("connect-mongo")(session);
 
 const dbPromise = require("./db");
 require("./helpers/init-passport")();
@@ -32,7 +34,8 @@ app.use(
 	session({
 		secret: appConfig.SESSION_SECRET,
 		resave: true,
-		saveUninitialized: false
+		saveUninitialized: false,
+		store: new MongoStore({ mongooseConnection: mongoose.connection })
 	})
 );
 app.use(passport.initialize());

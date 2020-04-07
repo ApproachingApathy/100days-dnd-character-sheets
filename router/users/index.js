@@ -39,7 +39,6 @@ router.post(
 	"/signup",
 	bodyParser.urlencoded({ extended: true }),
 	async (req, res) => {
-		console.log(req.body);
 		const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		const passwordPattern = /^(?:(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,50}).*)$/u;
 		try {
@@ -47,26 +46,37 @@ router.post(
 			assert(
 				typeof req.body.password == "string" &&
 					req.body.password.length > 0,
-				"Bad Request: No Password"
+				"No Password"
 			);
 			assert(
 				typeof req.body.email == "string" && req.body.email.length > 0,
-				"Bad Request: No Email"
+				"No Email"
 			);
 			assert(
 				typeof req.body.username == "string" &&
 					req.body.username.length > 0,
-				"Bad Request: No Username"
+				"No Username"
 			);
 			assert(
 				emailPattern.test(req.body.email),
-				"Bad Request: Email Incorrectly Formatted"
+				"Email Incorrectly Formatted"
 			);
 			assert(
 				passwordPattern.test(req.body.password),
-				"Bad Request: Password does not meet requirements"
+				"Password does not meet requirements. \n 8-50 Characters, 1 lowercase, uppercase, and number."
 			);
-			assert();
+			assert(
+				(await req.context.db.models.Player.findOne({
+					email: req.body.email
+				})) == null,
+				"User with that email already exists"
+			),
+				assert(
+					(await req.context.db.models.Player.findOne({
+						username: req.body.username
+					})) == null,
+					"Username taken"
+				);
 		} catch (err) {
 			res.status(400);
 			req.flash({ type: "ERROR", message: err.message });
@@ -82,9 +92,20 @@ router.post(
 			)
 		})
 			.then(() => {
+				logger.debug("User Created");
+				req.flash({
+					type: "SUCCESS",
+					message: "Signup successful! You can now login."
+				});
 				res.redirect("/");
 			})
 			.catch((err) => {
+				logger.debug("Failed to create user.");
+				res.status(500);
+				req.flash({
+					type: "ERROR",
+					message: "An error occurred please try again later."
+				});
 				res.redirect("/users/login");
 			});
 	}
