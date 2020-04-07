@@ -42,6 +42,15 @@ app.use(async (req, res, next) => {
 	req.context = { db };
 	next();
 });
+app.use((req, res, next) => {
+	req.flash = function (flash) {
+		this.session.sessionFlash = { type: flash.type, message: flash.message };
+		return this;
+	};
+	res.locals.sessionFlash = req.session.sessionFlash;
+	req.session.sessionFlash = null;
+	next();
+});
 app.use(require("./router"));
 
 const server = app.listen(

@@ -32,7 +32,7 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-	res.send("signup page");
+	res.redirect("/users/login");
 });
 
 router.post(
@@ -41,7 +41,7 @@ router.post(
 	async (req, res) => {
 		console.log(req.body);
 		const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,50})/;
+		const passwordPattern = /^(?:(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,50}).*)$/u;
 		try {
 			assert(req.body, "Bad Request");
 			assert(
@@ -69,7 +69,8 @@ router.post(
 			assert();
 		} catch (err) {
 			res.status(400);
-			res.json({ error: err.toString() });
+			req.flash({ type: "ERROR", message: err.message });
+			res.redirect("/users/login");
 			return false;
 		}
 
@@ -83,8 +84,8 @@ router.post(
 			.then(() => {
 				res.redirect("/");
 			})
-			.catch(() => {
-				res.redirect("/users/signup");
+			.catch((err) => {
+				res.redirect("/users/login");
 			});
 	}
 );

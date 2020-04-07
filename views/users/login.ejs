@@ -1,4 +1,18 @@
 <div class="col">
+	<div class="row">
+		<!-- prettier-ignore -->
+		<div class="col-md">
+			<%if (typeof sessionFlash != "null" && sessionFlash.type == "ERROR") { %>
+				<div class="alert alert-danger" role='alert'>
+					<%= sessionFlash.message %> 
+				</div>
+			<% } else if (typeof sessionFlash != "null" && sessionFlash.type == "SUCCESS") { %> 
+				<div class="alert alert-success" role="alert">
+					<%= sessionFlash.message %> 
+				</div>
+			<% } %>
+		</div>
+	</div>
 	<div class="row" id="signup-form">
 		<div class="col-md border-right border-white">
 			<h1>Signup</h1>
