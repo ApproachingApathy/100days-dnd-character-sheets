@@ -325,6 +325,16 @@ const Character = new Schema({
 			}
 		],
 		default: []
+	},
+	createdAt: {
+		type: Schema.Types.Date,
+		required: true,
+		default: new Date()
+	},
+	updatedAt: {
+		type: Schema.Types.Date,
+		required: true,
+		default: new Date()
 	}
 });
 
@@ -352,6 +362,11 @@ Character.pre("save", function (next, docs) {
 		.then(() => {
 			next();
 		});
+});
+
+Character.pre("save", function (next, docs) {
+	this.updatedAt = new Date();
+	next();
 });
 
 module.exports = Character;

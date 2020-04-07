@@ -20,14 +20,29 @@ const Player = new Schema({
 	password: {
 		type: String,
 		required: true
+	},
+	createdAt: {
+		type: Schema.Types.Date,
+		required: true,
+		default: new Date()
+	},
+	updatedAt: {
+		type: Schema.Types.Date,
+		required: true,
+		default: new Date()
 	}
 });
 
-Player.methods.checkPassword = function(plainTextPassword) {
+Player.pre("save", function (next, docs) {
+	this.updatedAt = new Date();
+	next();
+});
+
+Player.methods.checkPassword = function (plainTextPassword) {
 	return bcrypt.compare(plainTextPassword, this.password);
 };
 
-Player.statics.hashPassword = function(plainTextPassword) {
+Player.statics.hashPassword = function (plainTextPassword) {
 	return bcrypt.hash(plainTextPassword, 10);
 };
 
