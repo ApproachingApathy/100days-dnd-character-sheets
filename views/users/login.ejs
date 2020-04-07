@@ -2,11 +2,11 @@
 	<div class="row">
 		<!-- prettier-ignore -->
 		<div class="col-md">
-			<%if (typeof sessionFlash != "null" && sessionFlash.type == "ERROR") { %>
+			<% if ( locals.sessionFlash !== null && locals.sessionFlash.type == "ERROR" ) { %>
 				<div class="alert alert-danger" role='alert'>
 					<%= sessionFlash.message %> 
 				</div>
-			<% } else if (typeof sessionFlash != "null" && sessionFlash.type == "SUCCESS") { %> 
+			<% } else if ( locals.sessionFlash !== null && locals.sessionFlash.type == "SUCCESS" ) { %> 
 				<div class="alert alert-success" role="alert">
 					<%= sessionFlash.message %> 
 				</div>
@@ -47,7 +47,7 @@
 						required
 						minlength="8"
 						maxlength="50"
-						pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,50})"
+						title="8-50 characters. 1 lowercase, uppercase, and number."
 					/>
 				</div>
 				<div class="form-group">
