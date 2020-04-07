@@ -41,7 +41,7 @@ module.exports = function initPassport() {
 	passport.deserializeUser(async (id, done) => {
 		logger.debug(`Deserializing user: ${id}`);
 		const db = await dbPromise;
-		let user = db.models.Player.findById(id);
+		let user = await db.models.Player.findById(id);
 		done(null, user);
 	});
 };
