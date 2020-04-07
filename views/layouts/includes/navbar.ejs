@@ -1,0 +1,20 @@
+<nav class="navbar navbar-dark bg-info col-md fixed-top navbar-expand-lg">
+	<a href="/" class="navbar-brand">D&D Sheets</a>
+	<ul class="navbar-nav m-0 ml-auto">
+		<% if (isSignedIn) { %>
+		<li class="nav-item">
+			<a href="/users/characters" class="nav-link">Characters</a>
+		</li>
+		<li class="nav-item">
+			<a href="/users/settings" class="nav-link"></a>
+		</li>
+		<li class="nav-item">
+			<a href="/users/logout" class="nav-link">Logout</a>
+		</li>
+		<% } else { %>
+		<li class="nav-item">
+			<a href="/users/login" class="nav-link">Login</a>
+		</li>
+		<% } %>
+	</ul>
+</nav>
