@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const Die = require("../../sharedSchemas/die");
+
 const Skill = Schema({
 	proficiency: {
 		type: Boolean,
@@ -298,8 +300,14 @@ const Character = new Schema({
 				default: 0
 			},
 			hitDice: {
-				type: String,
-				default: "1d6"
+				type: Die,
+				default: {
+					amount: 1,
+					dice: "d6"
+				},
+				get: (hitDice) => {
+					return `${hitDice.amount}${hitDice.dice}`;
+				}
 			}
 		}
 	},
@@ -320,9 +328,9 @@ const Character = new Schema({
 	}
 });
 
-Character.pre("save", function(next, docs) {
+Character.pre("save", function (next, docs) {
 	// Loop through skills
-	Object.keys(this.stats.skills).forEach(key => {
+	Object.keys(this.stats.skills).forEach((key) => {
 		let skill = this.stats.skills[key];
 		skill.skill.value = Math.floor(
 			// Calculate modifier
@@ -336,7 +344,7 @@ Character.pre("save", function(next, docs) {
 	// This will likely be changed because the
 	// character speed may change.
 	Race.findOne({ _id: this.race })
-		.then(characterRace => {
+		.then((characterRace) => {
 			if (characterRace) {
 				this.stats.speed = characterRace.stats.speed;
 			}
