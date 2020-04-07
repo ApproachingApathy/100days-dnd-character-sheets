@@ -26,6 +26,11 @@ router.post(
 	})
 );
 
+router.get("/logout", (req, res) => {
+	req.logout();
+	res.redirect("/");
+});
+
 router.get("/signup", (req, res) => {
 	res.send("signup page");
 });
@@ -83,5 +88,26 @@ router.post(
 			});
 	}
 );
+
+router.get("/characters", async (req, res) => {
+	logger.debug(`[/users/characters] user id: ${req.user.id}`);
+	console.log(req.user);
+	if (req.isAuthenticated) {
+		const characters = await req.context.db.models.Character.find({
+			player: req.user.id
+		});
+		console.log(characters);
+		res.render("characters/characterList", {
+			page: {
+				title: "Your Characters"
+			},
+			data: {
+				characters
+			}
+		});
+	} else {
+		res.redirect("/users/login");
+	}
+});
 
 module.exports = router;

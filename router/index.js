@@ -10,6 +10,7 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
 	res.locals.site = siteConfig;
+	res.locals.isSignedIn = Boolean(req.user);
 	next();
 });
 
