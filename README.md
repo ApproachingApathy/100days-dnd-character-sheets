@@ -11,7 +11,7 @@ I'll be using Node.js and building a full-stack Express app with MongoDB.
 
 #### Minimum Viable
 
--  [ ] Present a D&D Character Sheet
+-  [X] Present a D&D Character Sheet
    -  [ ] The sheet should display all the same info as the first page of the 5e Official sheet.
 -  [ ] Users should be able to log in and create player-characters.
 -  [ ] Users should be able to edit character sheets.
