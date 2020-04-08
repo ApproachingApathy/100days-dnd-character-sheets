@@ -30,15 +30,18 @@ const Character = new Schema({
 		index: true
 	},
 	race: {
-		type: [mongoose.ObjectId, null]
+		type: mongoose.ObjectId,
+		ref: "Race"
 		// required: true
 	},
 	class: {
-		type: [mongoose.ObjectId, null]
+		type: mongoose.ObjectId,
+		ref: "Class"
 		// required: true
 	},
 	player: {
-		type: [mongoose.ObjectId, null]
+		type: mongoose.ObjectId,
+		ref: "Player"
 		// required: true
 	},
 	description: {

@@ -19,7 +19,14 @@ const Player = new Schema({
 	},
 	password: {
 		type: String,
-		required: true
+		required: true,
+		get: () => {
+			let accessError = new Error(
+				"Password field is not directly accessible. Please use the checkPassword or hashPassword method."
+			);
+			logger.error(accessError.message);
+			throw accessError;
+		}
 	},
 	createdAt: {
 		type: Schema.Types.Date,
