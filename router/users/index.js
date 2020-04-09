@@ -100,7 +100,7 @@ router.post(
 				res.redirect("/");
 			})
 			.catch((err) => {
-				logger.debug("Failed to create user.");
+				logger.error(err.message);
 				res.status(500);
 				req.flash({
 					type: "ERROR",

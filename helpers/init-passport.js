@@ -14,7 +14,7 @@ module.exports = function initPassport() {
 				const db = await dbPromise;
 				const player = await db.models.Player.findOne({
 					email: email.toLowerCase()
-				});
+				}).select("password");
 				if (!player) {
 					logger.debug(`No email found for: ${email}`);
 					return done(null, false, { message: "Incorrect Credentials" });

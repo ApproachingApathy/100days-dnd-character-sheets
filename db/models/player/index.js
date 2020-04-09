@@ -20,6 +20,7 @@ const Player = new Schema({
 	password: {
 		type: String,
 		required: true,
+		select: false,
 		get: () => {
 			let accessError = new Error(
 				"Password field is not directly accessible. Please use the checkPassword or hashPassword method."
@@ -46,7 +47,10 @@ Player.pre("save", function (next, docs) {
 });
 
 Player.methods.checkPassword = function (plainTextPassword) {
-	return bcrypt.compare(plainTextPassword, this.password);
+	return bcrypt.compare(
+		plainTextPassword,
+		this.get("password", null, { getters: false })
+	);
 };
 
 Player.statics.hashPassword = function (plainTextPassword) {
