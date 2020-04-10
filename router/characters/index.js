@@ -3,8 +3,15 @@ const bodyParser = require("body-parser");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-	res.send("character page");
+router.get("/", async (req, res) => {
+	const characters = await req.context.db.models.Character.find().populate(
+		"player"
+	);
+	res.render("characters/characterList", {
+		data: {
+			characters
+		}
+	});
 });
 
 router.get("/writer", (req, res) => {
@@ -14,21 +21,16 @@ router.get("/writer", (req, res) => {
 router.get("/:id", async (req, res) => {
 	const character = await req.context.db.models.Character.findOne({
 		_id: req.params.id
-	});
+	}).populate("player");
 
 	if (character == null) {
 		res.redirect("/404");
 		return false;
 	}
 
-	const player = await req.context.db.models.Player.findOne({
-		_id: character.player
-	});
-
 	res.render("characters/characterSheet", {
 		data: {
 			character,
-			player,
 			races: await req.context.db.models.Race.find()
 		}
 	});
@@ -63,7 +65,7 @@ router.post("/new", bodyParser.json(), (req, res) => {
 				charisma: data.stats.abilities.charisma || abilityScoreDefault
 			}
 		}
-	}).then(result => res.json(result));
+	}).then((result) => res.json(result));
 });
 
 module.exports = router;

@@ -115,7 +115,7 @@ router.get("/characters", async (req, res) => {
 	if (req.isAuthenticated()) {
 		const characters = await req.context.db.models.Character.find({
 			player: req.user.id
-		});
+		}).populate("player");
 		console.log(characters);
 		res.render("characters/characterList", {
 			page: {

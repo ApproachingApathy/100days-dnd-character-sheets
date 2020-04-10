@@ -9,6 +9,9 @@
 			/>
 			<div class="card-body">
 				<h5 class="card-title"><%= character.shortName %></h5>
+				<h6 class="card-subtitle mb-2 text-muted">
+					<%= character.player.username %>
+				</h6>
 				<p class="card-text text-truncate"><%= character.description %></p>
 				<a href="/characters/<%= character.id %> " class="btn btn-primary"
 					>Go somewhere</a
