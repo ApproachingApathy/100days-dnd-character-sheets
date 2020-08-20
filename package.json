@@ -11,7 +11,7 @@
 	"license": "MIT",
 	"private": false,
 	"dependencies": {
-		"bcrypt": "^4.0.1",
+		"bcrypt": "^5.0.0",
 		"body-parser": "^1.19.0",
 		"bootstrap": "^4.4.1",
 		"connect-mongo": "^3.2.0",
